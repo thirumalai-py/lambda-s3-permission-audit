@@ -1,9 +1,11 @@
+import os
 import boto3
 
 s3 = boto3.client('s3')
 sns = boto3.client('sns')
 
-SNS_TOPIC_ARN = 'arn:aws:sns:ap-south-1:975050024946:thiru-s3-public-buckets-topic'  # 🔁 Replace
+SNS_TOPIC_ARN = os.environ['SNS_TOPIC_ARN']
+
 
 def lambda_handler(event, context):
     response = s3.list_buckets()
